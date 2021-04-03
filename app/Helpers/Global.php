@@ -36,7 +36,7 @@ function get_area($data)
 
 function getDataReferral($data)
 {
-    $res = ReferralPatient::where('status', '!=', 1);
+    $res = ReferralPatient::where('status', 0);
     if ($data->user_id != 'all') {
         $res->where('user_id', $data->user_id);
     }
@@ -52,7 +52,7 @@ function getDataReferral($data)
     if ($data->step != 'all') {
         $res->where('step', $data->step);
     }
-
+    // dd($res->get());
     return $res->get();
 }
 
